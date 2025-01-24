@@ -24,6 +24,7 @@ function checkPuzzleArea(){
     for(i=0; i<countRows*countColumns; i++){
         if(imageList[i] !== currentPuzzleArea[i].children[0]){
             rightPuzzle = false;
+            break;
         }
     }
     if(rightPuzzle){
@@ -80,8 +81,7 @@ function onMouseDown(event){
 
         puzzle.style.position = 'absolute';
         document.body.appendChild(puzzle);
-
-        moveAt(event.pageX, event.pageY);
+        moveAt(event.pageX || event.targetTouches[0].pageX, event.pageY || event.targetTouches[0].pageY);
         function moveAt(pageX, pageY) {
             puzzle.style.left = pageX - shiftX + 'px';
             puzzle.style.top = pageY - shiftY + 'px';
