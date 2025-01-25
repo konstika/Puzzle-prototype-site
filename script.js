@@ -108,10 +108,11 @@ function onMouseDown(event){
             if (currentDroppable) {
                 currentDroppable.style.backgroundColor="green";
             }
+            if(event.cancelable){event.preventDefault();}
         }
 
-        document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('touchmove', onMouseMove);
+        document.addEventListener('mousemove', onMouseMove, {passive:false});
+        document.addEventListener('touchmove', onMouseMove, {passive:false});
 
   
         puzzle.onmouseup = onMouseUp;
